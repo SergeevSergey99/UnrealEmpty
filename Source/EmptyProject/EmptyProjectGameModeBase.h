@@ -13,30 +13,5 @@ UCLASS()
 class EMPTYPROJECT_API AEmptyProjectGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
-public:
-	AEmptyProjectGameModeBase();
 	
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

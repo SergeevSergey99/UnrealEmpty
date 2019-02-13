@@ -10,7 +10,6 @@ UCLASS()
 class EMPTYPROJECT_API AMyCharacter : public ACharacter
 {
 	GENERATED_BODY()
-
 public:
 	// Sets default values for this character's properties
 	AMyCharacter();
@@ -25,5 +24,8 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
+	void MoveForward(float amount);
+	void MoveRight(float amount);
+	void Yaw(float amount);
+	void Pitch(float amount);
 };

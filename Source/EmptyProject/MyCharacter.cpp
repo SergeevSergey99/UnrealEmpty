@@ -1,33 +1,64 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+#include"MyCharacter.h"
+#include"Components/InputComponent.h"
 
-#include "MyCharacter.h"
-
-// Sets default values
 AMyCharacter::AMyCharacter()
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
 }
 
-// Called when the game starts or when spawned
 void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
-// Called every frame
 void AMyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 }
 
-// Called to bind functionality to input
-void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void AMyCharacter::MoveForward(float amount) 
 {
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	
+	// Не вводите тело этой функции, если контроллер
+	// ещё не установлен или если сумма для движения равна 0
+	if (Controller && amount)
+	{
+		FVector fwd = GetActorForwardVector();
+		// мы вызываем AddMovementInput, чтобы собственно двигать
+		// игрока `суммой` в направлениях `fwd`
+		AddMovementInput(fwd, amount);
+	}
 
 }
+void AMyCharacter::MoveRight(float amount)
+{
+	if (Controller && amount)
+	{
+		FVector right = GetActorRightVector();
+		// мы вызываем AddMovementInput, чтобы собственно двигать
+		// игрока `суммой` в направлениях `fwd`
+		AddMovementInput(right, amount);
+	}
+}
 
+void AMyCharacter::Yaw(float amount)
+{
+	AddControllerYawInput(amount);
+}
+
+void AMyCharacter::Pitch(float amount)
+{
+	AddControllerPitchInput(amount);
+}
+void AMyCharacter::SetupPlayerInputComponent(class UInputComponent*	PlayerInputComponent)
+{
+	check(PlayerInputComponent);
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	PlayerInputComponent->BindAxis("Forward", this, &AMyCharacter::MoveForward);
+	PlayerInputComponent->BindAxis("Right", this, &AMyCharacter::MoveRight);
+
+	PlayerInputComponent->BindAxis("Yaw", this, &AMyCharacter::Yaw);
+	PlayerInputComponent->BindAxis("Pitch", this, &AMyCharacter::Pitch);
+}

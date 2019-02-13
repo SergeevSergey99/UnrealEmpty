@@ -2,6 +2,3 @@
 
 #include "EmptyProjectGameModeBase.h"
 
-AEmptyProjectGameModeBase::AEmptyProjectGameModeBase()
-{
-}
