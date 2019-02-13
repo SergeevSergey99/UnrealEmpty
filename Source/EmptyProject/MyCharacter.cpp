@@ -21,13 +21,13 @@ void AMyCharacter::Tick(float DeltaTime)
 void AMyCharacter::MoveForward(float amount) 
 {
 	
-	// Не вводите тело этой функции, если контроллер
-	// ещё не установлен или если сумма для движения равна 0
+	// ГЌГҐ ГўГўГ®Г¤ГЁГІГҐ ГІГҐГ«Г® ГЅГІГ®Г© ГґГіГ­ГЄГ¶ГЁГЁ, ГҐГ±Г«ГЁ ГЄГ®Г­ГІГ°Г®Г«Г«ГҐГ°
+	// ГҐГ№Вё Г­ГҐ ГіГ±ГІГ Г­Г®ГўГ«ГҐГ­ ГЁГ«ГЁ ГҐГ±Г«ГЁ Г±ГіГ¬Г¬Г  Г¤Г«Гї Г¤ГўГЁГ¦ГҐГ­ГЁГї Г°Г ГўГ­Г  0
 	if (Controller && amount)
 	{
 		FVector fwd = GetActorForwardVector();
-		// мы вызываем AddMovementInput, чтобы собственно двигать
-		// игрока `суммой` в направлениях `fwd`
+		// Г¬Г» ГўГ»Г§Г»ГўГ ГҐГ¬ AddMovementInput, Г·ГІГ®ГЎГ» Г±Г®ГЎГ±ГІГўГҐГ­Г­Г® Г¤ГўГЁГЈГ ГІГј
+		// ГЁГЈГ°Г®ГЄГ  `Г±ГіГ¬Г¬Г®Г©` Гў Г­Г ГЇГ°Г ГўГ«ГҐГ­ГЁГїГµ `fwd`
 		AddMovementInput(fwd, amount);
 	}
 
@@ -37,8 +37,8 @@ void AMyCharacter::MoveRight(float amount)
 	if (Controller && amount)
 	{
 		FVector right = GetActorRightVector();
-		// мы вызываем AddMovementInput, чтобы собственно двигать
-		// игрока `суммой` в направлениях `fwd`
+		// Г¬Г» ГўГ»Г§Г»ГўГ ГҐГ¬ AddMovementInput, Г·ГІГ®ГЎГ» Г±Г®ГЎГ±ГІГўГҐГ­Г­Г® Г¤ГўГЁГЈГ ГІГј
+		// ГЁГЈГ°Г®ГЄГ  `Г±ГіГ¬Г¬Г®Г©` Гў Г­Г ГЇГ°Г ГўГ«ГҐГ­ГЁГїГµ `fwd`
 		AddMovementInput(right, amount);
 	}
 }
@@ -50,7 +50,7 @@ void AMyCharacter::Yaw(float amount)
 
 void AMyCharacter::Pitch(float amount)
 {
-	AddControllerPitchInput(amount);
+	AddControllerPitchInput(-amount);
 }
 void AMyCharacter::SetupPlayerInputComponent(class UInputComponent*	PlayerInputComponent)
 {
