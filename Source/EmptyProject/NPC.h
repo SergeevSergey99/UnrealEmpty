@@ -10,11 +10,16 @@ UCLASS()
 class EMPTYPROJECT_API ANPC : public ACharacter
 {
 	GENERATED_BODY()
-		UPROPERTY(EditAnywrare, BluePrintReadWrite, Category = NPCMassage)
-		FString Npc_Message;
 public:
 	// Sets default values for this character's properties
 	ANPC();
+
+
+	UPROPERTY(EditAnywhere, BluePrintReadWrite, Category = NPCParams)
+		FString Npc_Name;
+
+	UPROPERTY(EditAnywhere, BluePrintReadWrite, Category = NPCParams)
+		FString Npc_Message;
 
 protected:
 	// Called when the game starts or when spawned
