@@ -9,6 +9,24 @@
 /**
  * 
  */
+struct Message 
+{
+	FString message;
+	FColor color;
+	float time;
+	Message()
+	{
+		time = 5.f;
+		color = FColor::White;
+	}
+	Message(FString myMessage, FColor myColor, float myTime)
+	{
+		message = myMessage;
+		time = myTime;
+		color = myColor;
+	}
+};
+
 UCLASS()
 class EMPTYPROJECT_API AMyHUD : public AHUD
 {
@@ -17,6 +35,9 @@ class EMPTYPROJECT_API AMyHUD : public AHUD
 public:
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = HUDFont)
 		UFont* hudFont;
+	
+	TArray<Message> messages;
+	void addMessage(Message msg);
 
 	virtual void DrawHUD() override;
 };
